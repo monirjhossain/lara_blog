@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,6 +26,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Admin Route//
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace'=> 'Admin', 'middleware'=>['auth','admin']], function(){
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('users', 'UserController');
+    Route::resource('category', 'CategoryController')->except(['create','show','edit']);
+    Route::resource('post', 'PostController');
 });
 
 //User Route//
