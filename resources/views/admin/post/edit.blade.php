@@ -47,18 +47,19 @@
             <div class="card">
                             
         <div class="card-body">
-            <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-            @csrf                            
+            <form action="{{ route('admin.post.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            @csrf       
+            @method('PUT')                     
              <div class="row form-group">
                  <div class="col col-md-3"><label for="title" class=" form-control-label">Title</label></div>
-                  <div class="col-12 col-md-9"><input type="text" id="title" name="title" placeholder="Title" class="form-control"></div>
+                  <div class="col-12 col-md-9"><input type="text" id="title" name="title" placeholder="Title" class="form-control" value="{{ $post->title }}"></div>
             </div>
              <div class="row form-group">
                       <div class="col col-md-3"><label for="category" class=" form-control-label">Category</label></div>
                      <div class="col-12 col-md-9">
                          <select name="category" id="category" class="form-control">
                           @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ $post->category->id == $category->id ? "selected" : "" }}>{{ $category->name }}</option>
                          @endforeach
                          </select>
                      </div>
@@ -73,7 +74,7 @@
                         <div class="form-check">
                             <div class="checkbox">
                                 <label for="checkbox1" class="form-check-label ">
-                                    <input type="checkbox" id="status" name="status" value="option1" class="form-check-input">Option 1
+                                    <input type="checkbox" id="status" name="status" class="form-check-input" value="1" {{ $post->status == 1 ? "checked" : "" }}>Published
                                 </label>
                             </div>
                         </div>
@@ -85,7 +86,7 @@
                 </div>
             <div class="row form-group">
                 <div class="col col-md-3"><label for="body" class=" form-control-label">Content</label></div>
-                <div class="col-12 col-md-9"><textarea name="body" id="summernote" rows="9" placeholder="Content..." class="form-control"></textarea></div>
+                <div class="col-12 col-md-9"><textarea name="body" id="summernote" rows="9" placeholder="Content..." class="form-control">{{ $post->body }}</textarea></div>
             </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fa fa-dot-circle-o"></i> Submit
