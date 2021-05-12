@@ -49,6 +49,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'title' => 'required|max:255|unique:posts',
             'image' => 'required|mimes:jpg,jpeg,png,bmp',
@@ -85,6 +86,14 @@ class PostController extends Controller
             $post->status = 1;
         }
         $post->save();
+
+        $tags = [];
+        $stringTags = explode(',', $request->tag); 
+        foreach($stringTags as $tag){
+            array_push($tags , ['name'=> $tag]);
+        }
+        $post->tags()->createMany($tags);
+
         Toastr::success('Post created successfully!');
         return redirect()->route('admin.post.index');
     }
@@ -97,7 +106,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('admin.post.show', compact('post'));
     }
 
@@ -109,17 +118,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $categories = Category::all();
         return view('admin.post.edit', compact('post','categories'));
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -154,7 +157,7 @@ class PostController extends Controller
 
             Storage::disk('public')->put('post/' . $imageName, $postImage);
         }else{
-            $request->image = $post->image;
+            $imageName = $post->image;
         }
         
         $post->user_id = Auth::id();
@@ -169,6 +172,16 @@ class PostController extends Controller
             $post->status = false;
         }
         $post->save();
+
+        //Delete old tag
+        $post->tag()->delete();
+        $tags = [];
+        $stringTags = array_map('trim', explode(',', $request->tag));
+        foreach ($stringTags as $tag) {
+            array_push($tags, ['name' => $tag]);
+        }
+        $post->tags()->createMany($tags);
+
         Toastr::success('Post Updated successfully!');
         return redirect()->route('admin.post.index');
     }
@@ -185,6 +198,8 @@ class PostController extends Controller
         if (!Storage::disk('public')->exists('post', $post->image)) {
             Storage::disk('public')->delete('post', $post->image);
         }
+        //delete tags
+        $post->tags()->delete();
         $post->delete();
         Toastr::success('Post Deleted successfully!');
         return redirect()->route('admin.post.index');

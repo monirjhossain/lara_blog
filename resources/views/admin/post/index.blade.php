@@ -1,4 +1,5 @@
 @extends('layouts.backend.app') 
+@section('title','Post');
 @push('header')
     <link rel="stylesheet" href="{{ asset('backend') }}/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
@@ -65,14 +66,16 @@
                                     <tbody>
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{$post->title }}</td>
-                                            <td>{{$post->slug }}</td>
-                                            <td>{{$post->name }}</td>
+                                            <td>{{ $post->title }}</td>
+                                            <td>{{ $post->slug }}</td>
+                                            <td>{{ $post->name }}</td>
                                             <td><img src="{{ asset('storage/post/'. $post->image) }}" alt="{{ $post->name }}" height="60px" width="90px"></td>
                                             <td>
                                                 <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                                 <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{ route('admin.post.destroy', $post->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{ $post->id }}">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
                                                 
                                             </td>
                                         </tr>

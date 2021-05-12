@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -103,7 +104,7 @@ class UserController extends Controller
         if (Auth::user()->id == $id) {
             return redirect()->back();
         }
-
+        Storage::disk('public')->delete('user/', $user->image);
         $user->delete();
         Toastr::success('success', 'User has been deleted successfully!');
         return redirect()->back();

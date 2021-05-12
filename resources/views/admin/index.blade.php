@@ -1,5 +1,5 @@
 @extends('layouts.backend.app') 
-
+@section('title','Dashboard');
 @section('content')
 <div class="breadcrumbs">
             <div class="col-sm-4">

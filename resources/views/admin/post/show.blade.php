@@ -44,16 +44,26 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Post Table</strong>
-                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                <a href="{{ route('admin.post.destroy', $post->id) }}" class="btn btn-danger float-right"><i class="fa fa-trash-o"></i></a>
+                                <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deleteModal-{{ $post->id }}">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
                             </div>
                             <div class="card-body">
                                 <h1>{{ $post->title }}</h1>
-                                <h5>{{ $post->category->name }}</h5>
+                                <h5>Category : {{ $post->category->name }}</h5>
                                 <p> Created At : {{ $post->created_at }}</p>
+                                <h5>Tag:</h5>
+                                <div class="my-2">
+                                    @if ($post->tags)
+                                        @foreach($post->tags as $tag)
+                                            <a href="#" class="btn btn-outline-primary btn-flat btn-sm">{{ $tag->name }}</a>
+                                        @endforeach
+                                    @endif
+                                </div>
                                 <hr>
-                                <div>
+                                <div class="text-center">
+                                    <img src="{{ asset('storage/post/'. $post->image) }}" alt="{{ $post->name }}" height="600px" width="900px">
                                     {!!$post->body!!}
                                 </div>
                             </div>
@@ -62,7 +72,7 @@
                 </div>
             </div><!-- .animated -->
             <div class="animated">
-               {{-- <div class="modal fade" id="deleteModal-{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" data-backdrop="static" style="display: none;" aria-hidden="true">
+               <div class="modal fade" id="deleteModal-{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" data-backdrop="static" style="display: none;" aria-hidden="true">
                    <div class="modal-dialog modal-sm" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
@@ -87,7 +97,7 @@
                            </div>
                        </div>
                    </div>
-               </div> --}}
+               </div>
             </div>
         </div><!-- .content -->
     </div>
