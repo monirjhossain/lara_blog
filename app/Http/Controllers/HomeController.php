@@ -58,12 +58,15 @@ class HomeController extends Controller
 
     public function tagPosts($name)
     {
-        $post_ids = DB::table('tags')->where('name', 'like', "%$name%")->select('postID')->get()->pluck('postID');
+        // $post_ids = DB::table('tags')->where('name', 'like', "%$name%")->select('postID')->get()->pluck('postID');
 
-        $tags = Post::whereIn('id', $post_ids)->paginate();
+
+        // $tags = Post::whereIn('id', $post_ids)->paginate();
+        $query = $name;
+        $tags = Tag::where('name', 'like',"%$name%")->paginate(4);
         
         $tags->appends(['search' => $name]);
 
-        return view('tagPost', compact('tags'));
+        return view('tagPost', compact('tags', 'query'));
     }
 }

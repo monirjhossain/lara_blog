@@ -33,6 +33,9 @@ Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/category/{slug}', 'HomeController@categoryPost')->name('category.post');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
+Route::post('/comment/{post}', 'CommentController@store')->name('comment.store');
+Route::post('comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store');
+
 
 //Admin Route//
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace'=> 'Admin', 'middleware'=>['auth','admin']], function(){
@@ -43,17 +46,26 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace'=> 'Admin', 'mid
     Route::resource('users', 'UserController');
     Route::resource('category', 'CategoryController')->except(['create','show','edit']);
     Route::resource('post', 'PostController');
+    Route::get('comments', 'CommentController@index')->name('comment.index');
+    Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
+    Route::get('reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
+    Route::delete('reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
+    
 });
 
 
 //User Route//
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'user', 'middleware' => ['auth', 'user']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('comments', 'CommentController@index')->name('comment.index');
+    Route::delete('comment/{id}', 'CommentController@destroy')->name('comment.destroy');
+    Route::get('reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
+    Route::delete('reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
 });
 
 //View Composser
 View::composer('layouts.frontend.partials.sidebar', function($view){
-    $recentPosts = Post::all()->take(5);
-    $recentTags = Tag::all()->take(5);
+    $recentPosts = Post::latest()->take(3)->get();
+    $recentTags = Tag::all();
     return $view->with('recentTags', $recentTags)->with('recentPosts', $recentPosts);
 });

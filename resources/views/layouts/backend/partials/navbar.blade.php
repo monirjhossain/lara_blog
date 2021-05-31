@@ -10,7 +10,8 @@
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
-                <ul class="nav navbar-nav">
+                @if (Auth::user()->role_id == 1)
+                    <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="{{ url('admin/dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
@@ -24,7 +25,26 @@
                     <li class="active">
                         <a href="{{ url('admin/post') }}"> <i class="menu-icon fa fa-diamond"></i>Posts</a>
                     </li>
+                    <li class="active">
+                        <a href="{{ url('admin/comments') }}"> <i class="menu-icon fa fa-comment"></i>Comments</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url('admin/reply-comments') }}"> <i class="menu-icon fa fa-comment"></i>Replied Comments</a>
+                    </li>
                 </ul>
+                @else
+                    <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{{ url('user/dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>User Dashboard </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url('user/comments') }}"> <i class="menu-icon fa fa-comment"></i>Comments</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url('user/reply-comments') }}"> <i class="menu-icon fa fa-comment"></i>Replied Comments</a>
+                    </li>
+                </ul>
+                @endif
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>

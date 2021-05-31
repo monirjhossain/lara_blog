@@ -1,7 +1,6 @@
 @extends('layouts.frontend.app')
 @section('content')
-        <!-- start banner Area -->
-    <section
+<section
       class="banner-area relative"
       id="home"
       data-parallax="scroll"
@@ -10,10 +9,9 @@
       <div class="container">
         <div class="row fullscreen">
           <div
-            class="banner-content d-flex align-items-center col-lg-12 col-md-12"
-          >
+            class="banner-content d-flex align-items-center col-lg-12 col-md-12">
             <h1>
-              Welcome to myiotlab<br />
+              Welcome to Blogs<br/>
               <p>
                 L<span style="font-size: 0.7em">earn</span> &nbspC<span
                   style="font-size: 0.7em"
@@ -25,21 +23,19 @@
           </div>
 
           <div
-            class="head-bottom-meta d-flex justify-content-between align-items-end col-lg-12"
-          >
+            class="head-bottom-meta d-flex justify-content-between align-items-end col-lg-12">
             <div class="col-lg-6 flex-row d-flex meta-left no-padding">
               <a href="/login" class="genric-btn info circle arrow mr-md-auto"
                 >Visit Yotube <span class="lnr lnr-arrow-right"></span
               ></a>
             </div>
             <div
-              class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end"
-            >
+              class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end">
               <div class="user-meta">
                 <h4 class="text-white">Mark wiens</h4>
                 <p>12 Dec, 2017 11:21 am</p>
               </div>
-              <img class="img-fluid user-img" src="{{ asset('frontend') }}img/user.jpg" alt="" />
+              <img class="img-fluid user-img" src="{{ asset('frontend') }}img/user.jpg" alt=""/>
             </div>
           </div>
         </div>
@@ -102,7 +98,6 @@
 										<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>5</span></li>
 								</ul>
-
 						<p></p>
 						</div>
 					</div>
@@ -153,7 +148,7 @@
 								</div>
 							</div>
 							<div class="meta-text mt-30 text-center">
-								<h4>Subhadip Ghorui</h4>
+								<h4>Md. Monir Hossain</h4>
 								<p>Creator</p>
 							</div>
 						</div>
