@@ -65,9 +65,9 @@
                                     <tbody>
                                         <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{$comment->comment }}</td>
-                                            <td>{{$comment->user->name }}</td>
-                                            <td><a href="{{ route('post', $comment->post->slug) }}">{{$comment->post->title }}</a></td>
+                                            <td>{{ $comment->comment }}</td>
+                                            <td>{{ $comment->user->name }}</td>
+                                            <td><a href="{{ route('/post', $comment->post->slug) }}">{{$comment->post->title }}</a></td>
                                             <td>{{$comment->created_at->diffForHumans() }}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-danger mb-1 " data-toggle="modal" data-target="#deleteModal-{{ $comment->id }}">
