@@ -54,4 +54,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\CommentReply');
     }
+
+    //Many To Many Relationship
+    
+    public function likedPosts()
+    {
+        return $this->belongsToMany('App\Post')->withTimestamps();
+    }
 }

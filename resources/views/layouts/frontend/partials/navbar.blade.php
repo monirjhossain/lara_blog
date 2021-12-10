@@ -17,10 +17,6 @@
 
              @if (Route::has('login'))
                     @auth
-                    
-                    
-                    
-                        
                           <li class="dropdown">
                               <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                   <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;

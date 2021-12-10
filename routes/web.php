@@ -35,6 +35,7 @@ Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
 Route::post('/comment/{post}', 'CommentController@store')->name('comment.store');
 Route::post('comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store');
+Route::post('/like-post/{post}', 'HomeController@likePost')->name('like-post')->middleware('auth'); 
 
 
 //Admin Route//

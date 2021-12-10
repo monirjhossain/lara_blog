@@ -17,7 +17,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8" />
     <!-- Site Title -->
-    <title>Blogger</title>
+    <title>Sports News</title>
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
@@ -54,7 +54,7 @@
     <footer class="footer-area section-gap">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-12">
+          {{-- <div class="col-lg-3 col-md-12">
             <div class="single-footer-widget">
               <h6>Top Products</h6>
               <ul class="footer-nav">
@@ -64,8 +64,8 @@
                 <li><a href="#">Marketing Service</a></li>
               </ul>
             </div>
-          </div>
-          <div class="col-lg-6 col-md-12">
+          </div> --}}
+          {{-- <div class="col-lg-6 col-md-12">
             <div class="single-footer-widget newsletter">
               <h6>Newsletter</h6>
               <p>
@@ -109,10 +109,10 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> --}}
           <div class="col-lg-3 col-md-12">
             <div class="single-footer-widget mail-chimp">
-              <h6 class="mb-20">Instragram Feed</h6>
+              {{-- <h6 class="mb-20">Instragram Feed</h6> --}}
               <ul class="instafeed d-flex flex-wrap">
                 <li><img src="img/i1.jpg" alt="" /></li>
                 <li><img src="img/i2.jpg" alt="" /></li>
@@ -134,9 +134,9 @@
             <script>
               document.write(new Date().getFullYear());
             </script>
-            All rights reserved | This template is made with
+            All rights reserved | This Website is made with
             <i class="fa fa-heart-o" aria-hidden="true"></i> by
-            <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <a href="https:monirjhossain.com" target="_blank">Md. Monir Hossain</a>
           </p>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           <div class="col-lg-4 col-sm-12 footer-social">

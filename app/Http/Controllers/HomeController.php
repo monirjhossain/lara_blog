@@ -7,6 +7,7 @@ use App\Post;
 use Illuminate\Support\Facades\DB;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -68,5 +69,17 @@ class HomeController extends Controller
         $tags->appends(['search' => $name]);
 
         return view('tagPost', compact('tags', 'query'));
+    }
+
+    public function likePost($post){
+    // if the user already liked the post or not!
+    $user = Auth::user();
+    $likePost = $user->likedPosts()->where('post_id', $post)->count(); 
+    if($likePost == 0){
+        $user->likedPosts()->attach($post);
+    }else{
+        $user->likedPosts()->detach($post);
+    }
+    return redirect()->back();
     }
 }

@@ -11,29 +11,27 @@
           <div
             class="banner-content d-flex align-items-center col-lg-12 col-md-12">
             <h1>
-              Welcome to Blogs<br/>
+        		খেলার দুনিয়ায় আপনাকে স্বাগতম<br/> 
               <p>
-                L<span style="font-size: 0.7em">earn</span> &nbspC<span
-                  style="font-size: 0.7em"
-                  >reate</span
-                >
-                &nbspS<span style="font-size: 0.7em">hare</span>
+                প্র<span style="font-size: 0.7em">তিদিনের</span> 
+				&nbspখে<span style="font-size: 0.7em">লার</span>
+                &nbspখ<span style="font-size: 0.7em">বর</span>
+				&nbspএ<span style="font-size: 0.7em">খানেই</span>
               </p>
             </h1>
           </div>
 
           <div
             class="head-bottom-meta d-flex justify-content-between align-items-end col-lg-12">
-            <div class="col-lg-6 flex-row d-flex meta-left no-padding">
+            {{-- <div class="col-lg-6 flex-row d-flex meta-left no-padding">
               <a href="/login" class="genric-btn info circle arrow mr-md-auto"
-                >Visit Yotube <span class="lnr lnr-arrow-right"></span
-              ></a>
-            </div>
+                >Visit Yotube <span class="lnr lnr-arrow-right"></span></a>
+            </div> --}}
             <div
               class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end">
               <div class="user-meta">
-                <h4 class="text-white">Mark wiens</h4>
-                <p>12 Dec, 2017 11:21 am</p>
+                <h4 class="text-white">Md. Monir Hossain</h4>
+                <p>12 Dec, 2021 11:21 am</p>
               </div>
               <img class="img-fluid user-img" src="{{ asset('frontend') }}img/user.jpg" alt=""/>
             </div>
@@ -92,10 +90,10 @@
 							<p class=" footer " = "">
 								<br>
 								</p><ul class="d-flex space-around">
-									<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
+									<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> {{ $post->likedUsers()->count() }} </span></a></li>
 
 
-										<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
+									<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> {{ $post->comments()->count() }}</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>5</span></li>
 								</ul>
 						<p></p>
@@ -131,10 +129,10 @@
 					<br>
 					<p>I am <span class="c1">Full stack Web Developer</span> specialized <span class="c1">LARAVEL</span> - PHP. Currently Studing GEOSPATIAL SCIENCE and learning <span class="c1">GIS Web Applications Development</span>. </p>
 					<br>
-					<h4>Email: <span style="font-size: medium; font-weight: lighter;">subhadipghorui105@gmail.com</span></h4>
+					<h4>Email: <span style="font-size: medium; font-weight: lighter;">md.monirjhossain@gmail.com</span></h4>
 					<br>
 					<div class="col-md-12 d-flex justify-content-center py-3 mt-2">
-						<a href="https://subhadipghorui.github.io" class="genric-btn info circle arrow mr-md-auto" target="_blank">Know More<span class="lnr lnr-arrow-right"></span></a>
+						<a href="https:www.github.com/monirjhossain" class="genric-btn info circle arrow mr-md-auto" target="_blank">Know More<span class="lnr lnr-arrow-right"></span></a>
 					</div>
 				</div>
 				<div class="col-lg-6 team-right d-flex justify-content-center">

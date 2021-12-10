@@ -64,11 +64,18 @@
                 <div class="bottom-wrapper">
                   <div class="row">
                     <div class="col-lg-4 single-b-wrap col-md-12">
-                      <i class="fa fa-heart-o" aria-hidden="true"></i>
-                      lily and 4 people like this
+                      @guest
+                          <i class="fa fa-heart-o" aria-hidden="true"></i> 
+                          Like this Post
+                          @else
+                          <a href="#" onclick="document.getElementById('like-form-{{ $post->id }}').submit();"><i class="fa fa-heart" aria-hidden="true" style="color:{{Auth::user()->likedPosts()->where('post_id', $post->id)->count() > 0 ? 'red' : ''}}"></i></a> {{ $post->likedUsers()->count() }} Like this Post
+                          <form action="{{ route('like-post', $post->id) }}" method="POST" style="display:none" id="like-form-{{ $post->id }}">
+                            @csrf
+                          </form>
+                      @endguest
                     </div>
                     <div class="col-lg-4 single-b-wrap col-md-12">
-                      <i class="fa fa-comment-o" aria-hidden="true"></i> 06
+                      <i class="fa fa-comment-o" aria-hidden="true"></i> {{ $post->likedUsers()->count() }}
                       comments
                     </div>
                     <div class="col-lg-4 single-b-wrap col-md-12">
