@@ -76,12 +76,13 @@ class PostController extends Controller
             Storage::disk('public')->put('post/' . $imageName, $img);
 
         $post = new Post();
+        
         $post->title = $request->title;
         $post->user_id = Auth::id();
         $post->category_id = $request->category;
         $post->slug = $slug;
         $post->image = $imageName;
-        $post->body = $request->body;
+        $post->body = Str::limit($post->body,20);
         if(isset($request->status)){
             $post->status = 1;
         }

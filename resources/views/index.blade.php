@@ -87,16 +87,23 @@
 								{!! Str::limit($post->body, 100) !!}
 							</p>
 								
-							<p class=" footer " = "">
-								<br>
-								</p><ul class="d-flex space-around">
+								<p class=" footer " = "">
+									<br>
+								</p>
+								<ul class="d-flex space-around">
 									<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> {{ $post->likedUsers()->count() }} </span></a></li>
 
 
-									<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> {{ $post->comments()->count() }}</span></li>
-									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>5</span></li>
+									<li>
+										<i class="fa fa-comment-o" aria-hidden="true">
+											</i>
+											<span> {{ $post->comments()->count() }}</span>
+										</li>
+									<li>
+										<i class="fa fa-eye" aria-hidden="true"></i>
+										 <span>5</span>
+										</li>
 								</ul>
-						<p></p>
 						</div>
 					</div>
 					@endforeach
@@ -112,22 +119,19 @@
 				<div class="menu-content pb-70 col-lg-8">
 					<div class="title text-center">
 						<h1 class="mb-10">About This Site</h1>
-						<p>This is personal blogging site related to Internet of Things &amp; Web Development Tutorials</p>
+						<p>This is Sports blogging site made With Laravel Framework</p>
 					</div>
 				</div>
 			</div>
 			<div class="row justify-content-center d-flex align-items-center">
 				<div class="col-lg-6 team-left">
+					
 					<p>
-						Find a blogs and tutorials related to Internet of things, Web Designe, Web Development, GIS Web applications and more.
-					</p>
-					<p>
-						This site is made with laravel framework. The theme is <a href="">Blogger Theme</a> and the Admin Panel theme is <a href="https://github.com/puikinsh/sufee-admin-dashboard">Sufee Admin</a>.
-          </p>
-          <p>Checkout the full tutorial how this site is made on <span class="c1">Youtube</span>.</p>
+						Bismillahir Rahmanir Rahim
+          			</p>
 					<h4>About the Creator</h4>
 					<br>
-					<p>I am <span class="c1">Full stack Web Developer</span> specialized <span class="c1">LARAVEL</span> - PHP. Currently Studing GEOSPATIAL SCIENCE and learning <span class="c1">GIS Web Applications Development</span>. </p>
+					<p>I am <span class="c1">Web Developer</span> specialized <span class="c1">LARAVEL</span> - PHP. Currently Studied IsDB-BISEW Scholarship Project<span class="c1"> Web Applications Development</span>. </p>
 					<br>
 					<h4>Email: <span style="font-size: medium; font-weight: lighter;">md.monirjhossain@gmail.com</span></h4>
 					<br>
